@@ -3,9 +3,9 @@ title:  "테스트 포스팅"
 excerpt: "VS code로 md 파일에 테스트 포스트 작성!"
 
 categories:
-  - Blog
+  - Note
 tags:
-  - [Blog, jekyll, Github, Git]
+  - [Blog, Github, Markdown]
 
 toc: true
 toc_sticky: true
