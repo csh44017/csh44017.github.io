@@ -15,7 +15,7 @@ last_modified_at: 2022-10-27
 ---
 
   
-<GH_USERNAME>.github.io 리포지토리를 생성하여 블로그를 만들면,  
+{GH_USERNAME}.github.io 리포지토리를 생성하여 블로그를 만들면,  
 테마를 적용하기 위해 jekyll-theme-chirpy에서 다운받은 코드를 clone한 폴더에 압축해제한 후, push했을 때  
 Actions에서 빌드하는 도중에 계속 오류가 발생하였다.<br>  
   - .travis.yml, _posts 삭제  
