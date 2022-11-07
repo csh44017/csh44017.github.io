@@ -6,6 +6,7 @@ categories:
   - SignalProcessing
 tags:
   - [FourierSeries]
+use_math: true
 
 toc: true
 toc_sticky: true
