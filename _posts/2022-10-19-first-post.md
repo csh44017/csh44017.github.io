@@ -69,5 +69,7 @@ PC에 **Git**이 설치되어 있고 깃허브를 사용중인 상태로 가정<
     ```bash  
     git add *  
     git commit -m "커밋 메시지"  
-    git push
-    ```
+    git push  
+    ```  
+
+아바타, 배포 기본 설정, Actions  
