@@ -39,7 +39,7 @@ PC에 **Git**이 설치되어 있고 깃허브를 사용중인 상태로 가정<
 
 # 사이트 생성하기  
 1. 깃허브에서 <code>jekyll-theme-chirpy</code>를 검색 후 최신 소스를 자신의 깃허브에 Fork  
-2. fork 해온 리포지토리의 이름을 <code><GH_USERNAME>.github.io</code>로 변경  
+2. fork 해온 리포지토리의 이름을 <code>{GH_USERNAME}.github.io</code>로 변경  
 3. 리포지토리를 로컬로 clone  
 4. Ruby prompt를 관리자 권한으로 실행 후 로컬 리포지토리 경로로 이동,  
    테마에 필요한 라이브러리 설치  
