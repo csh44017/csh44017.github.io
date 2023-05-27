@@ -5,7 +5,7 @@ excerpt: "깃허브 블로그 생성 방법"
 categories:
   - Note
 tags:
-  - [Github, Blog, Markdown]
+  - [Git, Github, Blog]
 
 toc: true
 toc_sticky: true
@@ -29,7 +29,7 @@ Actions에서 빌드하는 도중에 계속 오류가 발생하였다.<br>
 인터넷에서 검색해본 방법들로는 각자 환경에 차이가 있는 것 같아  
 **jekyll-theme-chirpy/_posts/20xx-xx-xx-getting-started.md** 파일을 참조하여 해결하였다.  
 
-# 준비  
+## 준비  
 여러 테마들 중 **chirpy** 테마를 선택,  
 PC에 **Git**이 설치되어 있고 깃허브를 사용중인 상태로 가정<br>  
 1. <code>Ruby</code>, <code>RubyGem</code>, <code>Jekyll</code>, <code>Bundler</code> 설치  
@@ -37,7 +37,7 @@ PC에 **Git**이 설치되어 있고 깃허브를 사용중인 상태로 가정<
     (https://jekyllrb.com/docs/installation/ 참고)  
     - Installer 실행 후 next를 눌러 Ruby 설치를 완료하고 <code>ruby -v</code> 명령어로 설치 확인  
 
-# 사이트 생성하기  
+## 사이트 생성하기  
 1. 깃허브에서 <code>jekyll-theme-chirpy</code>를 검색 후 최신 소스를 자신의 깃허브에 Fork  
 2. fork 해온 리포지토리의 이름을 <code>{GH_USERNAME}.github.io</code>로 변경  
 3. 리포지토리를 로컬로 clone  
