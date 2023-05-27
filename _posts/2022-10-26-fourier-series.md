@@ -6,11 +6,12 @@ categories:
   - SignalProcessing
 tags:
   - [FourierSeries]
-use_math: true
 
 toc: true
 toc_sticky: true
- 
+
+math: true
+
 date: 2022-10-26
 last_modified_at: 2022-10-26
 ---
