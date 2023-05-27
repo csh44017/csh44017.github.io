@@ -120,7 +120,7 @@ last_modified_at: 2023-05-25
   ```bash  
   git switch {branch}
   ```  
-  git 2.23 버전 이후에는 'git checkout' 대신 'git switch'를 사용
+  git 2.23 버전 이후에는 'git checkout' 대신 'git switch'를 사용한다.  
 - 브랜치를 만들면서 브랜치 변경  
   ```bash  
   git switch -c {branch}
@@ -222,4 +222,3 @@ last_modified_at: 2023-05-25
   git push -f
   ```  
   버전 이동 시 로컬 저장소와 원격 저장소의 내용이 달라 그냥 push 되지 않을 경우 사용한다.  
-  
