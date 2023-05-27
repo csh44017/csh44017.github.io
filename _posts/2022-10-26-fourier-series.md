@@ -10,7 +10,7 @@ tags:
 toc: true
 toc_sticky: true
 
-math: true
+use_math: true
 
 date: 2022-10-26
 last_modified_at: 2022-10-26
