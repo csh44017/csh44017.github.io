@@ -36,3 +36,4 @@ $a_n$과 $b_n$은 파동이 얼마나 들어있는가를 의미한다.
 <blockquote><p> $(f, g) = \displaystyle\int_{a}^{b} f(x)\cdot g(x)dx = 0$ 일 경우,
 <br>구간 $[a,b]$에서 $f(x)$와 $g(x)$는 orthogonal
 </p></blockquote></div>  
+
