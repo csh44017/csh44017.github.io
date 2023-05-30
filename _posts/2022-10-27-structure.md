@@ -1,5 +1,5 @@
 ---
-title:  "구조체"
+title:  "구조체(Structure)"
 excerpt: "구조체 이해하기"
 
 categories:
