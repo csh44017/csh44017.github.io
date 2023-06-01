@@ -1,11 +1,11 @@
 ---
-title:  "Docker 명령어 정리"
-excerpt: "도커 명령어 정리"
+title:  "우분투에서 Docker 사용하기"
+excerpt: "우분투에서 도커를 통해 Kafka 메시지를 InfluxDB에 저장"
 
 categories:
-  - Docker
+  - [Ubuntu, Docker]
 tags:
-  - [Docker, Docker-Compose, Command]
+  - [Docker, Docker-Compose, Ubuntu, Kafka, InfluxDB]
 
 toc: true
 toc_sticky: true
