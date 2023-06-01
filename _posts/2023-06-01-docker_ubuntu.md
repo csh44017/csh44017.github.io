@@ -3,7 +3,7 @@ title:  "우분투에서 Docker 사용하기"
 excerpt: "우분투에서 도커를 통해 Kafka 메시지를 InfluxDB에 저장"
 
 categories:
-  - [Ubuntu, Docker]
+  - Ubuntu
 tags:
   - [Docker, Docker-Compose, Ubuntu, Kafka, InfluxDB]
 
