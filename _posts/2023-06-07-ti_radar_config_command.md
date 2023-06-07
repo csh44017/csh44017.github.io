@@ -43,7 +43,7 @@ TeraTerm 같은 시리얼 통신 프로그램을 통해서 **통신 포트(Enhan
               print(e, "\nPlease check serial port")
               return False
 
-      def loop(self):
+      def config(self):
           try:
               with open(self.cfg_path) as f:
                   lines = f.readlines()
@@ -65,7 +65,6 @@ TeraTerm 같은 시리얼 통신 프로그램을 통해서 **통신 포트(Enhan
   if __name__ == "__main__":
       rx = Receiver()
       if rx.is_ready():
-          while True:
-
+            rx.config()
   ```  
 단순히 센서에 전원을 인가하는 것만으로는 RF가 동작하지 않고 cli를 통해 sensor를 start 시켜주어야 센서 데이터를 보내기 시작한다.  
