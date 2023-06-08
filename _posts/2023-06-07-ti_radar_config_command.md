@@ -24,17 +24,12 @@ TI의 레이더 소스코드를 보면 사용자가 환경에 따라 변경할�
 
   - modeType  
 
-    **1 : 프레임에 기반한 chirp 사용**  
-    2 : 연속적으로 chirp 쏘기 (xwr68xx에서 지원X)  
-    3 : 고급 프레임 설정  
-
     | Value | Description |
     | ----- | ----------- |
     | **1** | **프레임에 기반한 chirp 사용 모드** |
     | 2     | 연속적으로 chirp 쏘기 (xwr68xx에서 지원X) |
     | 3     | 고급 프레임 설정 모드 |
 
-<br>
 - channelCfg  
   레이더 안테나 송수신 채널 설정  
   (필수로 입력해야 하는 command이며, sensorStop과 sensorStart 사이에서 값을 갱신하면 안되기 때문에 다른 설정 값을 사용하고 싶다면 보드를 재부팅한 후 command를 입력)  
