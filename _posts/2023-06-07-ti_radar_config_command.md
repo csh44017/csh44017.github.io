@@ -15,13 +15,84 @@ last_modified_at: 2023-06-08
 ---
 
 ## TI radar Configuration Command 정리  
-
-### Configuration Command  
 TI의 레이더 소스코드를 보면 사용자가 환경에 따라 변경할만한 파라메타들을 튜닝해서 사용할 수 있도록 cli를 통해 레이더의 동작에 관련된 설정들을 변경할 수 있도록 구현해 놓았다.  
+<br>  
 
+### 1. Configuration Command  
+- dfeDataOutputMode  
+  (필수로 입력해야 하는 command이며, sensorStop과 sensorStart 사이에서 값을 갱신하면 안되기 때문에 다른 설정 값을 사용하고 싶다면 보드를 재부팅한 후 command를 입력)  
+
+  - modeType  
+
+    **1 : 프레임에 기반한 chirp 사용**  
+    2 : 연속적으로 chirp 쏘기 (xwr68xx에서 지원X)  
+    3 : 고급 프레임 설정  
+<br>
+- channelCfg  
+  레이더 안테나 송수신 채널 설정  
+  (필수로 입력해야 하는 command이며, sensorStop과 sensorStart 사이에서 값을 갱신하면 안되기 때문에 다른 설정 값을 사용하고 싶다면 보드를 재부팅한 후 command를 입력)  
+
+  - rxChannelEn  
+    사용할 수신 안테나를 지정하기 위한 비트 마스크 값  
+
+    **15 = 0b1111 이므로 4개 안테나를 모두 사용** (xwr68xx는 4개 안테나 지원)  
+  - txChannelEn  
+    사용할 송신 안테나를 지정하기 위한 비트 마스크 값  
+
+    **7 = 0b111 이므로 3개 안테나를 사용** (xwr68xx는 3개 안테나 지원)  
+  - cascading  
+    SoC cascading 값  
+    
+    **해당되지 않으므로 0으로 설정**  
+<br>
+- adcCfg  
+  ADC 데이터 포맷 설정  
+  (필수로 입력해야 하는 command이며, sensorStop과 sensorStart 사이에서 값을 갱신하면 안되기 때문에 다른 설정 값을 사용하고 싶다면 보드를 재부팅한 후 command를 입력)  
+
+  - numADCBits  
+  
+    0 : 12bits  
+    1 : 14bits  
+    **2 : 16bits** (xwr68xx는 16bit만 지원)  
+  - adcOutputFmt  
+
+    0 : 실수 (xwr68xx는 지원X)  
+    1 : 허수 부분을 필터링한 복소수  
+    **2 : 허수 부분까지 사용된 복소수**  
+<br>
+- adcbufCfg  
+  ADC 데이터 버퍼의 하드웨어 설정  
+  (필수로 입력해야 하는 command이며, sensorStop과 sensorStart 사이에서 값을 갱신 가능)  
+  - subFrameIdx  
+
+    **-1 : 모든 서브프레임들에 같은 설정 적용** (legacy 모드에서는 -1로 설정해야 함)  
+    either : dfeDataOutputMode 를 3(고급 프레임 설정 모드)으로 세팅한 경우 원하는 서브프레임 번호를 사용  
+  - adcOutputFmt  
+    ADC 버퍼에서 나갈 데이터의 포맷 설정  
+    
+    **0 : 복소수** (xwr68xx는 복소수만 지원)  
+    1 : 실수  
+  - SampleSwap  
+    샘플링한 IQ 데이터의 I와 Q 순서 설정  
+
+    0 : I를 하위, Q를 상위로 저장  
+    **1 : Q를 하위, I를 상위로 저장** (xwr68xx는 1만 지원)  
+  - ChanInterleave  
+    각각의 안테나에서 수신한 ADC 버퍼 데이터를 안테나 채널을 전환하면서 저장할지 여부를 설정  
+
+    0 : 인터리빙 패턴에 따라 채널을 전환 (xwr14xx에서만 지원)  
+    **1 : 채널을 전환하지 않음** (xwr68xx는 1만 지원)  
+  - ChirpThreshold  
+    DSP가 아닌 HWA에서 1D FFT를 수행하거나 LVDS streaming 사용 시 1만 지원  
+
+
+단순히 센서에 전원을 인가하는 것만으로는 RF가 동작하지 않고 cli를 통해 sensor를 start 시켜주어야 센서 데이터를 보내기 시작한다.  
+<br>  
+
+### 2. Command 입력  
 TeraTerm 같은 시리얼 통신 프로그램을 통해서 **통신 포트(Enhanced COM Port)**와 **통신 속도(921600)**를 지정하여 포트를 오픈한 후 직접 명령어를 입력할 수도 있지만, 
-맞춰놓았던 설정 값들을 cfg파일에 필요한 command line을 작성해놓고 uart 통신으로 각각의 라인들을 차례대로 입력하여 사용하면 편리하게 사용할 수 있다.  
-- UART 통신으로 command 입력 및 데이터 수신  
+맞춰놓았던 설정 값들을 cfg파일에 필요한 command line을 작성해놓고 uart 통신으로 각각의 라인들을 차례대로 입력하면 편리하게 사용할 수 있다.  
+- UART 통신으로 command 입력  
   ```python  
   import time
   import serial  # pyserial
@@ -43,7 +114,8 @@ TeraTerm 같은 시리얼 통신 프로그램을 통해서 **통신 포트(Enhan
               print(e, "\nPlease check serial port")
               return False
 
-      def config(self):
+      # command - acknowledge
+      def loop(self):
           try:
               with open(self.cfg_path) as f:
                   lines = f.readlines()
@@ -64,8 +136,200 @@ TeraTerm 같은 시리얼 통신 프로그램을 통해서 **통신 포트(Enhan
 
   if __name__ == "__main__":
       rx = Receiver()
-      if rx.is_ready():
-            rx.config()
+      while True:
+          time.sleep(0.5)
+          if rx.is_ready():
+              rx.loop()
+              break
   ```  
-단순히 센서에 전원을 인가하는 것만으로는 RF가 동작하지 않고 cli를 통해 sensor를 start 시켜주어야 센서 데이터를 보내기 시작한다.  
+  여기에서 **ack = uart_com.readline().decode()** 를 연속으로 두 번 호출하는 이유는 명령-응답의 상호 작용을 위한 통신 타이밍을 보장하기 위한 것으로 보여진다. 이와 더불어 line 간에 sleep()도 적절한 통신을 위해 반드시 필요하다.  
+  (두 번의 호출 중에 하나의 ack에서만 응답이 들어있음)  
+  
+  - readline()을 한번만 사용하고 time.sleep()을 0.2초로 설정한 경우  
+    command가 끝까지 출력되지 않고 중간에 끊어지는 문제가 발생하였다.  
 
+  <br>
+  이외에도 readline()을 연속으로 두 번 호출하면 실제 응답이 아닌 이전 응답이나 불완전한 데이터를 첫 번째 read에서 가져가 버퍼에 존재할 수 있는 원치 않는 데이터를 버리고, 두 번째 호출에서 실제 응답을 읽어들여 '오류 처리'나 '동기화'에 관련된 방법으로 사용될 수 있다.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### CLI 코드  
+- CLI Init  
+  ```c  
+  void MmwDemo_CLIInit (uint8_t taskPriority)
+  {
+      CLI_Cfg     cliCfg;
+      char        demoBanner[256];
+      uint32_t    cnt;
+
+      /* Create Demo Banner to be printed out by CLI */
+      sprintf(&demoBanner[0], 
+                         "******************************************\n" \
+                         "xWR64xx MMW Demo %02d.%02d.%02d.%02d\n"  \
+                         "******************************************\n", 
+                          MMWAVE_SDK_VERSION_MAJOR,
+                          MMWAVE_SDK_VERSION_MINOR,
+                          MMWAVE_SDK_VERSION_BUGFIX,
+                          MMWAVE_SDK_VERSION_BUILD
+              );
+
+
+       /* Initialize the CLI configuration: */
+      memset ((void *)&cliCfg, 0, sizeof(CLI_Cfg));
+
+      /* Populate the CLI configuration: */
+      cliCfg.cliPrompt                    = "mmwDemo:/>";
+      cliCfg.cliBanner                    = demoBanner;
+      cliCfg.cliUartHandle                = gMmwMCB.commandUartHandle;
+      cliCfg.taskPriority                 = taskPriority;
+      cliCfg.socHandle                    = gMmwMCB.socHandle;
+      cliCfg.mmWaveHandle                 = gMmwMCB.ctrlHandle;
+      cliCfg.enableMMWaveExtension        = 1U;
+      cliCfg.usePolledMode                = true;
+      cliCfg.overridePlatform             = true;
+  #if defined(USE_2D_AOA_DPU)
+      cliCfg.overridePlatformString       = "xWR68xx_AOP";
+  #else
+      cliCfg.overridePlatformString       = "xWR64xx";
+  #endif
+    
+      cnt=0;
+      cliCfg.tableEntry[cnt].cmd            = "sensorStart";
+      cliCfg.tableEntry[cnt].helpString     = "[doReconfig(optional, default:enabled)]";
+      cliCfg.tableEntry[cnt].cmdHandlerFxn  = MmwDemo_CLISensorStart;
+      cnt++;
+  
+      cliCfg.tableEntry[cnt].cmd            = "sensorStop";
+      cliCfg.tableEntry[cnt].helpString     = "No arguments";
+      cliCfg.tableEntry[cnt].cmdHandlerFxn  = MmwDemo_CLISensorStop;
+      cnt++;
+
+      /* Open the CLI: */
+      if (CLI_open (&cliCfg) < 0)
+      {
+          System_printf ("Error: Unable to open the CLI\n");
+          return;
+      }
+      System_printf ("Debug: CLI is operational\n");
+      return;
+  }
+  ```  
+
+- CLI task  
+  ```c  
+  static void CLI_task(UArg arg0, UArg arg1)
+  {
+      uint8_t                 cmdString[256];  // 입력 받은 커맨드
+      char*                   tokenizedArgs[CLI_MAX_ARGS];
+      char*                   ptrCLICommand;
+      char                    delimitter[] = " \r\n";
+      uint32_t                argIndex;
+      CLI_CmdTableEntry*      ptrCLICommandEntry;
+      int32_t                 cliStatus;
+      uint32_t                index;
+  
+      // banner 존재 시 출력
+      if (gCLI.cfg.cliBanner != NULL)
+      {
+          CLI_write (gCLI.cfg.cliBanner);
+      }
+  
+      /* Loop around forever: */
+      while (1)
+      {
+          CLI_write (gCLI.cfg.cliPrompt);  // "mmwDemo:/>" 프롬프트 출력
+  
+          /* Reset the command string: */
+          memset ((void *)&cmdString[0], 0, sizeof(cmdString));
+  
+          /* Read the command message from the UART: */
+          UART_read (gCLI.cfg.cliUartHandle, &cmdString[0], (sizeof(cmdString) - 1));
+  
+          /* Reset all the tokenized arguments: */
+          memset ((void *)&tokenizedArgs, 0, sizeof(tokenizedArgs));
+          argIndex      = 0;
+          ptrCLICommand = (char*)&cmdString[0];
+  
+          /* comment lines found - ignore the whole line*/
+          if (cmdString[0]=='%') {
+              CLI_write ("Skipped\n");
+              continue;
+          }
+  
+          /* Set the CLI status: */
+          cliStatus = -1;
+  
+          /* The command has been entered we now tokenize the command message */
+          while (1)
+          {
+              /* Tokenize the arguments: */
+              tokenizedArgs[argIndex] = strtok(ptrCLICommand, delimitter);
+              if (tokenizedArgs[argIndex] == NULL)
+                  break;
+  
+              /* Increment the argument index: */
+              argIndex++;
+              if (argIndex >= CLI_MAX_ARGS)
+                  break;
+  
+              /* Reset the command string */
+              ptrCLICommand = NULL;
+          }
+  
+          /* Were we able to tokenize the CLI command? */
+          if (argIndex == 0)
+              continue;
+  
+          /* Cycle through all the registered CLI commands: */
+          for (index = 0; index < gCLI.numCLICommands; index++)
+          {
+              ptrCLICommandEntry = &gCLI.cfg.tableEntry[index];
+  
+              /* Do we have a match? */
+              if (strcmp(ptrCLICommandEntry->cmd, tokenizedArgs[0]) == 0)
+              {
+                  /* YES: Pass this to the CLI registered function */
+                  cliStatus = ptrCLICommandEntry->cmdHandlerFxn (argIndex, tokenizedArgs);
+                  if (cliStatus == 0)
+                  {
+                      CLI_write ("Done\n");
+                  }
+                  else
+                  {
+                      CLI_write ("Error %d\n", cliStatus);
+                  }
+                  break;
+              }
+          }
+  
+          /* Did we get a matching CLI command? */
+          if (index == gCLI.numCLICommands)
+          {
+              /* NO matching command found. Is the mmWave extension enabled? */
+              if (gCLI.cfg.enableMMWaveExtension == 1U)
+              {
+                  /* Yes: Pass this to the mmWave extension handler */
+                  cliStatus = CLI_MMWaveExtensionHandler (argIndex, tokenizedArgs);
+              }
+  
+              /* Was the CLI command found? */
+              if (cliStatus == -1)
+              {
+                  /* No: The command was still not found */
+                  CLI_write ("'%s' is not recognized as a CLI command\n", tokenizedArgs[0]);
+              }
+          }
+      }
+  }
+  ```  
