@@ -85,8 +85,19 @@ https://docs.docker.com/engine/reference/commandline/cli/
   ```bash  
   docker create -it --name {container_name} {image_repository}
   ```  
+
   | Option | Description                                         |
   | ------ | --------------------------------------------------- |
+  | -i     | 사용자가 입출력을 할 수 있는 상태로 설정 (interactive) |
+  | -t     | 가상 터미널 환경을 에뮬레이션                         |
+
+| Option | Description                                         |
+| ------ | --------------------------------------------------- |
+| -i     | 사용자가 입출력을 할 수 있는 상태로 설정 (interactive) |
+| -t     | 가상 터미널 환경을 에뮬레이션                         |
+
+  | Option | Description                                         |
+  |:------ |:--------------------------------------------------- |
   | -i     | 사용자가 입출력을 할 수 있는 상태로 설정 (interactive) |
   | -t     | 가상 터미널 환경을 에뮬레이션                         |
 
