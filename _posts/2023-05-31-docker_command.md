@@ -86,20 +86,10 @@ https://docs.docker.com/engine/reference/commandline/cli/
   docker create -it --name {container_name} {image_repository}
   ```  
 
-  | Option | Description                                         |
-  | ------ | --------------------------------------------------- |
+  | Option | Description |
+  | ------ | ----------- |
   | -i     | 사용자가 입출력을 할 수 있는 상태로 설정 (interactive) |
-  | -t     | 가상 터미널 환경을 에뮬레이션                         |
-
-| Option | Description                                         |
-| ------ | --------------------------------------------------- |
-| -i     | 사용자가 입출력을 할 수 있는 상태로 설정 (interactive) |
-| -t     | 가상 터미널 환경을 에뮬레이션                         |
-
-  | Option | Description                                         |
-  |:------ |:--------------------------------------------------- |
-  | -i     | 사용자가 입출력을 할 수 있는 상태로 설정 (interactive) |
-  | -t     | 가상 터미널 환경을 에뮬레이션                         |
+  | -t     | 가상 터미널 환경을 에뮬레이션 |
 
 - 컨테이너 삭제  
    ```bash  
@@ -118,6 +108,7 @@ https://docs.docker.com/engine/reference/commandline/cli/
   docker run -itd --name {container_name} -p {host_port}:{container_port} {image_repository} /bin/bash
   ```  
   호스트 IP의 포트로 접근하면 컨테이너의 포트로 연결된다.  
+
   | Option | Description |
   | ------ | ----------- |
   | -d     | 일반 프로세스가 아닌 데몬 프로세스(백그라운드) 형태로 실행해 프로세스가 끝나도 컨테이너 유지 |
