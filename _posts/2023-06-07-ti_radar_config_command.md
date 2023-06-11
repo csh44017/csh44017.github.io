@@ -11,7 +11,7 @@ toc: true
 toc_sticky: true
 
 date: 2023-06-07
-last_modified_at: 2023-06-08
+last_modified_at: 2023-06-11
 ---
 
 ## TI radar Configuration Command 정리  
@@ -20,7 +20,7 @@ TI의 레이더 소스코드를 보면 사용자가 환경에 따라 변경할�
 <div align="center">
   <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/a6c3bdf0-a5a0-4b1c-8d59-dd0029622598">  
 </div>
-몇몇 파라메타 값을 변경하기 위해서는 위의 chirp diagram에 대한 이해가 필요하다.  
+일부 파라메타 값을 변경하기 위해서는 위의 chirp diagram에 대한 이해가 필요하다.  
 <br>  
 
 ### 1. Configuration Command  
@@ -163,7 +163,42 @@ TI의 레이더 소스코드를 보면 사용자가 환경에 따라 변경할�
     **RampStart를 0초 시작으로 하여 Ramp가 끝나는 us 단위의 시간 설정**  
     rampEndTime 동안 주파수가 높아진다.  
 
+    | Value | Description |
+    | ----- | ----------- |
+    | 50    | 50us에 걸쳐 주파수 증가 (chirp 다이어그램의 관계에 따라 어떤 값이든 사용 가능) |
 
+  - txOutPower  
+    TX 안테나의 송신 출력 파워 차단 코드  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | **0** | **mmW demo에서는 0만 테스트된 상태** |
+
+  - txPhaseShifter  
+    TX 안테나의 송신 위상 시프터  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | **0** | **mmW demo에서는 0만 테스트된 상태** |
+
+  - freqSlopeConst  
+    Ramp 형태의 **chirp에 대한 MHz/us 단위의 주파수 기울기** (float로 작성 가능)  
+    chirp 다이어그램의 관계에 따라 다른 profile 파라메타들과 상호의존적으로 설정해야 한다.  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | 55.27 | **chirp의 기울기를 55.27로 설정** (0보다 큰 값을 사용) |
+
+  - txStartTime  
+    주파수가 증가하기 시작하는 RampStart를 기준으로 얼만큼의 us 시간 이전에 TX를 시작할 것인지 설정 (float로 작성 가능)  
+    chirp 다이어그램의 관계에 따라 다른 profile 파라메타들과 상호의존적으로 설정해야 한다.  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | 1     | 주파수를 증가하기 1us 이전에 TX 안테나에서 송신 시작 |
+
+  - numAdcSamples  
+  
 
 
 
