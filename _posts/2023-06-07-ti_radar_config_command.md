@@ -16,6 +16,11 @@ last_modified_at: 2023-06-08
 
 ## TI radar Configuration Command 정리  
 TI의 레이더 소스코드를 보면 사용자가 환경에 따라 변경할만한 파라메타들을 튜닝해서 사용할 수 있도록 cli를 통해 레이더의 동작에 관련된 설정들을 변경할 수 있도록 구현해 놓았다.  
+
+<div align="center">
+  <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/a6c3bdf0-a5a0-4b1c-8d59-dd0029622598">  
+</div>
+몇몇 파라메타 값을 변경하기 위해서는 위의 chirp diagram에 대한 이해가 필요하다.  
 <br>  
 
 ### 1. Configuration Command  
@@ -110,13 +115,107 @@ TI의 레이더 소스코드를 보면 사용자가 환경에 따라 변경할�
     | **1** | **채널을 전환하지 않음** (xwr68xx는 1만 지원) |
     
   - ChirpThreshold  
-    DSP가 아닌 HWA에서 1D FFT를 수행하거나 LVDS streaming 사용 시 1만 지원  
+    ADC 버퍼에서 ping/pong 버퍼 스위치를 트리거하기 위해 사용되는 threshold 구성  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | 0 ~ 8 | DSP를 사용하여 1D FFT를 수행하는 경우 |
+    | **1** | DSP가 아닌 **HWA에서 1D FFT를 수행하거나 LVDS streaming 사용**하는 경우 (xwr68xx는 1만 지원) |
+
+- profileCfg  
+  
+  - profileId  
+    **프로파일 식별자**  
+    (아무 값이나 사용 가능하지만, 특별한 것이 없으면 보통 0으로 사용)  
+
+    | Value        | Description |
+    | ------------ | ----------- |
+    | **anything** | dfeOutputMode를 1(프레임에 기반한 chirp 사용 모드)로 세팅한 경우, **아무 값이나 사용 가능 (config 당 1개의 유효한 프로파일 지원)** |
+    | anything | dfeOutputMode를 3(고급 프레임 설정 모드)로 세팅한 경우, 아무 값이나 사용 가능 (서브 프레임당 1개의 프로파일이 지원되며, 다른 서브 프레임들은 다른 프로파일들을 가져야 함) |
+
+  - startFreq  
+    **주파수 변조를 시작할 GHz 단위 주파수** (float로 작성 가능)  
+    RampStart에서의 주파수도 해당 주파수가 된다.  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | 61.2  | 61.2GHz에서 시작 (chirp 다이어그램의 관계에 따라 어떤 값이든 사용 가능) |
+    | 77    | 77GHz에서 시작 (chirp 다이어그램의 관계에 따라 어떤 값이든 사용 가능) |
+
+  - idleTime  
+    **RampEnd와 RampStart 사이에 해당하는 us 단위의 유휴 상태 시간** (float로 작성 가능)  
+    Ramp가 끝났기 때문에 다음 Ramp를 준비하기 위해 idleTime 동안 직전 Ramp 에서 증가시켰던 주파수를 다시 startFreq로 내리고 (내려간 주파수가 startFreq에서 흔들리지 않고 안정된 상태가 되어야 함), RampEnd와 함께 off 되었던 TX를 다시 ON 시킨다.  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | 7.34  | 7.34us의 유휴 시간 설정 (chirp 다이어그램의 관계에 따라 어떤 값이든 사용 가능) |
+    | 60.00 | 60.00us의 유휴 시간 설정 (chirp 다이어그램의 관계에 따라 어떤 값이든 사용 가능) |
+
+  - adcStartTime  
+    **RampStart를 기준으로 설정한 ADC 대기 시간** (float로 작성 가능)  
+    RampStart에서 주파수가 높아지기 시작한 후 FrequencySlope가 안정된 구간에서 유효한 ADC 샘플링을 하기 위해 필요하다.  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | 17.00 | 17.00 (chirp 다이어그램의 관계에 따라 어떤 값이든 사용 가능) |
+
+  - rampEndTime  
+    **RampStart를 0초 시작으로 하여 Ramp가 끝나는 us 단위의 시간 설정**  
+    rampEndTime 동안 주파수가 높아진다.  
+
+
+
+
+
+
 
 
 단순히 센서에 전원을 인가하는 것만으로는 RF가 동작하지 않고 cli를 통해 sensor를 start 시켜주어야 센서 데이터를 보내기 시작한다.  
 <br>  
 
-### 2. Command 입력  
+### 2. cfg 파일 예시  
+```cfg  
+sensorStop
+dfeDataOutputMode 1
+channelCfg 15 7 0
+adcCfg 2 1
+adcbufCfg -1 0 1 1 1
+lowPower 0 0
+
+profileCfg 0 61.2 60.00 17.00 50 394758 0 55.27 1 64 2000.00 2 1 36
+chirpCfg 0 0 0 0 0 0 0 1
+chirpCfg 1 1 0 0 0 0 0 2
+chirpCfg 2 2 0 0 0 0 0 4
+frameCfg 0 2 224 400 120.00 1 0
+
+
+dynamic2DAngleCfg -1 5 1 1 1.00 15.00 2
+dynamicRACfarCfg -1 10 1 1 1 8 8 6 4 4.00 6.00 0.50 1 1
+staticRACfarCfg -1 4 4 2 2 8 16 4 6 6.01 13.00 0.50 0 0
+dynamicRangeAngleCfg -1 7.000 0.0010 2 0
+staticRangeAngleCfg -1 0 1 1
+
+antGeometry0 -1 -1 0 0 -3 -3 -2 -2 -1 -1 0 0
+antGeometry1 -1 0 -1 0 -3 -2 -3 -2 -3 -2 -3 -2
+antPhaseRot -1 1 -1 1 -1 1 -1 1 -1 1 -1 1
+fovCfg -1 64.0 64.0
+compRangeBiasAndRxChanPhase 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+
+
+staticBoundaryBox -3 3 -3 3 -0.5 3
+boundaryBox -5 5 -5 5 -0.5 3.5
+sensorPosition 3.5 0 90
+gatingParam 2 2 2 2 4
+stateParam 3 3 6 300 5 1000
+allocationParam 2 100 0.01 5 1.5 20
+maxAcceleration 0.2 0.01 0.2
+trackingCfg 1 4 800 20 37 33 120
+presenceBoundaryBox -6 6 -6 6 0.5 4.0
+sensorStart
+```  
+<br>
+
+### 3. Command 입력  
 TeraTerm 같은 시리얼 통신 프로그램을 통해서 **통신 포트(Enhanced COM Port)**와 **통신 속도(921600)**를 지정하여 포트를 오픈한 후 직접 명령어를 입력할 수도 있지만, 
 맞춰놓았던 설정 값들을 cfg파일에 필요한 command line을 작성해놓고 uart 통신으로 각각의 라인들을 차례대로 입력하면 편리하게 사용할 수 있다.  
 - UART 통신으로 command 입력  
