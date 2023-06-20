@@ -11,7 +11,7 @@ toc: true
 toc_sticky: true
 
 date: 2023-06-07
-last_modified_at: 2023-06-11
+last_modified_at: 2023-06-21
 ---
 
 ## TI radar Configuration Command 정리  
@@ -198,6 +198,117 @@ TI의 레이더 소스코드를 보면 사용자가 환경에 따라 변경할�
     | 1     | 주파수를 증가하기 1us 이전에 TX 안테나에서 송신 시작 |
 
   - numAdcSamples  
+    RampStart와 RampEnd 사이에 있는 StartADCSampling부터 EndADCSampling까지에 해당하는 **ADCSamplingTime 동안 수집할 ADC 샘플의 개수 설정**  
+    **(numAdcSamples / digOutSampleRate) = ADCSamplingTime**  
+
+    | Value  | Description |
+    | ------ | ----------- |
+    | **64** | **64개의 ADC 샘플을 수집** (chirp 다이어그램의 관계에 따라 어떤 값이든 사용 가능) |
+    | 256   | 256개의 ADC 샘플을 수집 (chirp 다이어그램의 관계에 따라 어떤 값이든 사용 가능) |
+
+  - digOutSampleRate  
+    ksps(1초당 1000개의 샘플) 단위의 **ADC 샘플링 주파수 설정**  
+    **(numAdcSamples / digOutSampleRate) = ADCSamplingTime**  
+
+    | Value       | Description |
+    | ----------- | ----------- |
+    | **2000.00** | **2MHz의 샘플링 주파수 사용** (chirp 다이어그램의 관계에 따라 어떤 값이든 사용 가능) |
+
+  - hpfCornerFreq1  
+    레이더 신호에서 원치 않는 저주파나 클러터를 제거하기 위한 **HPF1의 코너 주파수 설정**  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | 0     | HPF1의 코너 주파수를 175kHz로 설정 |
+    | 1     | HPF1의 코너 주파수를 235kHz로 설정 |
+    | **2** | **HPF1의 코너 주파수를 350kHz로 설정** |
+    | 3     | HPF1의 코너 주파수를 700kHz로 설정 |
+
+  - hpfCornerFreq2  
+    레이더 신호에서 원치 않는 저주파나 클러터를 제거하기 위한 **HPF2의 코너 주파수 설정**  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | 0     | HPF2의 코너 주파수를 350kHz로 설정 |
+    | **1** | **HPF2의 코너 주파수를 700kHz로 설정** |
+    | 2     | HPF2의 코너 주파수를 1.4MHz로 설정 |
+    | 3     | HPF2의 코너 주파수를 2.8MHz로 설정 |
+
+  - rxGain  
+    수신된 레이더 신호를 증폭할 dB 단위의 RX 이득 값  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | 36    | RX 이득을 36dB로 설정 |    
+
+- chirpCfg  
+  chirp의 구성 설정  
+  (필수로 입력해야 하는 command이며, sensorStop과 sensorStart 사이에서 값을 갱신 가능)  
+
+  - chirpStartIdx  
+    chirp의 시작 인덱스  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | **0** | **TX0을 위한 설정** |
+    | **1** | **TX1을 위한 설정** |
+    | **2** | **TX2을 위한 설정** |
+
+  - chirpEndIdx  
+    chirp 끝 인덱스  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | **0** | **TX0을 위한 설정** |
+    | **1** | **TX1을 위한 설정** |
+    | **2** | **TX2을 위한 설정** |
+
+  - profiled  
+    profile 식별자  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | **0** | **항상 0으로 사용**(profileCfg.profileId에서 정의하여 하나의 프로파일만 사용) |
+
+  - startFreqVar  
+    Hz 단위의 시작 주파수  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | **0** | **0으로 사용** (profileCfg에서 설정하는 것을 추천) |
+
+  - freqSlopeVar  
+    kHz/us 단위의 주파수 기울기  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | **0** | **0으로 사용** (profileCfg에서 설정하는 것을 추천) |
+
+  - idleTimeVar  
+    us 단위의 유휴 시간  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | **0** | **0으로 사용** (profileCfg에서 설정하는 것을 추천) |
+
+  - adcStartTimeVar  
+    us 단위의 ADC 시작 시간
+
+    | Value | Description |
+    | ----- | ----------- |
+    | **0** | **0으로 사용** (profileCfg에서 설정하는 것을 추천) |
+
+  - txEnableMask  
+    TX 안테나의 enable 마스크  
+    개별적인 chirp들은 각각 오직 하나의 TX 안테나에 대해 활성화되어야 한다. (TDM-MIMO 모드)  
+
+    | Value | Description |
+    | ----- | ----------- |
+    | **1** | **0b001로 마스킹되어 TX0을 활성화** |
+    | **2** | **0b010으로 마스킹되어 TX1을 활성화** |
+    | **4** | **0b100으로 마스킹되어 TX2를 활성화** |
+
+- lowPower  
   
 
 
@@ -311,186 +422,3 @@ TeraTerm 같은 시리얼 통신 프로그램을 통해서 **통신 포트(Enhan
 
   <br>
   이외에도 readline()을 연속으로 두 번 호출하면 실제 응답이 아닌 이전 응답이나 불완전한 데이터를 첫 번째 read에서 가져가 버퍼에 존재할 수 있는 원치 않는 데이터를 버리고, 두 번째 호출에서 실제 응답을 읽어들여 '오류 처리'나 '동기화'에 관련된 방법으로 사용될 수 있다.  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### CLI 코드  
-- CLI Init  
-  ```c  
-  void MmwDemo_CLIInit (uint8_t taskPriority)
-  {
-      CLI_Cfg     cliCfg;
-      char        demoBanner[256];
-      uint32_t    cnt;
-
-      /* Create Demo Banner to be printed out by CLI */
-      sprintf(&demoBanner[0], 
-                         "******************************************\n" \
-                         "xWR64xx MMW Demo %02d.%02d.%02d.%02d\n"  \
-                         "******************************************\n", 
-                          MMWAVE_SDK_VERSION_MAJOR,
-                          MMWAVE_SDK_VERSION_MINOR,
-                          MMWAVE_SDK_VERSION_BUGFIX,
-                          MMWAVE_SDK_VERSION_BUILD
-              );
-
-
-       /* Initialize the CLI configuration: */
-      memset ((void *)&cliCfg, 0, sizeof(CLI_Cfg));
-
-      /* Populate the CLI configuration: */
-      cliCfg.cliPrompt                    = "mmwDemo:/>";
-      cliCfg.cliBanner                    = demoBanner;
-      cliCfg.cliUartHandle                = gMmwMCB.commandUartHandle;
-      cliCfg.taskPriority                 = taskPriority;
-      cliCfg.socHandle                    = gMmwMCB.socHandle;
-      cliCfg.mmWaveHandle                 = gMmwMCB.ctrlHandle;
-      cliCfg.enableMMWaveExtension        = 1U;
-      cliCfg.usePolledMode                = true;
-      cliCfg.overridePlatform             = true;
-  #if defined(USE_2D_AOA_DPU)
-      cliCfg.overridePlatformString       = "xWR68xx_AOP";
-  #else
-      cliCfg.overridePlatformString       = "xWR64xx";
-  #endif
-    
-      cnt=0;
-      cliCfg.tableEntry[cnt].cmd            = "sensorStart";
-      cliCfg.tableEntry[cnt].helpString     = "[doReconfig(optional, default:enabled)]";
-      cliCfg.tableEntry[cnt].cmdHandlerFxn  = MmwDemo_CLISensorStart;
-      cnt++;
-  
-      cliCfg.tableEntry[cnt].cmd            = "sensorStop";
-      cliCfg.tableEntry[cnt].helpString     = "No arguments";
-      cliCfg.tableEntry[cnt].cmdHandlerFxn  = MmwDemo_CLISensorStop;
-      cnt++;
-
-      /* Open the CLI: */
-      if (CLI_open (&cliCfg) < 0)
-      {
-          System_printf ("Error: Unable to open the CLI\n");
-          return;
-      }
-      System_printf ("Debug: CLI is operational\n");
-      return;
-  }
-  ```  
-
-- CLI task  
-  ```c  
-  static void CLI_task(UArg arg0, UArg arg1)
-  {
-      uint8_t                 cmdString[256];  // 입력 받은 커맨드
-      char*                   tokenizedArgs[CLI_MAX_ARGS];
-      char*                   ptrCLICommand;
-      char                    delimitter[] = " \r\n";
-      uint32_t                argIndex;
-      CLI_CmdTableEntry*      ptrCLICommandEntry;
-      int32_t                 cliStatus;
-      uint32_t                index;
-  
-      // banner 존재 시 출력
-      if (gCLI.cfg.cliBanner != NULL)
-      {
-          CLI_write (gCLI.cfg.cliBanner);
-      }
-  
-      /* Loop around forever: */
-      while (1)
-      {
-          CLI_write (gCLI.cfg.cliPrompt);  // "mmwDemo:/>" 프롬프트 출력
-  
-          /* Reset the command string: */
-          memset ((void *)&cmdString[0], 0, sizeof(cmdString));
-  
-          /* Read the command message from the UART: */
-          UART_read (gCLI.cfg.cliUartHandle, &cmdString[0], (sizeof(cmdString) - 1));
-  
-          /* Reset all the tokenized arguments: */
-          memset ((void *)&tokenizedArgs, 0, sizeof(tokenizedArgs));
-          argIndex      = 0;
-          ptrCLICommand = (char*)&cmdString[0];
-  
-          /* comment lines found - ignore the whole line*/
-          if (cmdString[0]=='%') {
-              CLI_write ("Skipped\n");
-              continue;
-          }
-  
-          /* Set the CLI status: */
-          cliStatus = -1;
-  
-          /* The command has been entered we now tokenize the command message */
-          while (1)
-          {
-              /* Tokenize the arguments: */
-              tokenizedArgs[argIndex] = strtok(ptrCLICommand, delimitter);
-              if (tokenizedArgs[argIndex] == NULL)
-                  break;
-  
-              /* Increment the argument index: */
-              argIndex++;
-              if (argIndex >= CLI_MAX_ARGS)
-                  break;
-  
-              /* Reset the command string */
-              ptrCLICommand = NULL;
-          }
-  
-          /* Were we able to tokenize the CLI command? */
-          if (argIndex == 0)
-              continue;
-  
-          /* Cycle through all the registered CLI commands: */
-          for (index = 0; index < gCLI.numCLICommands; index++)
-          {
-              ptrCLICommandEntry = &gCLI.cfg.tableEntry[index];
-  
-              /* Do we have a match? */
-              if (strcmp(ptrCLICommandEntry->cmd, tokenizedArgs[0]) == 0)
-              {
-                  /* YES: Pass this to the CLI registered function */
-                  cliStatus = ptrCLICommandEntry->cmdHandlerFxn (argIndex, tokenizedArgs);
-                  if (cliStatus == 0)
-                  {
-                      CLI_write ("Done\n");
-                  }
-                  else
-                  {
-                      CLI_write ("Error %d\n", cliStatus);
-                  }
-                  break;
-              }
-          }
-  
-          /* Did we get a matching CLI command? */
-          if (index == gCLI.numCLICommands)
-          {
-              /* NO matching command found. Is the mmWave extension enabled? */
-              if (gCLI.cfg.enableMMWaveExtension == 1U)
-              {
-                  /* Yes: Pass this to the mmWave extension handler */
-                  cliStatus = CLI_MMWaveExtensionHandler (argIndex, tokenizedArgs);
-              }
-  
-              /* Was the CLI command found? */
-              if (cliStatus == -1)
-              {
-                  /* No: The command was still not found */
-                  CLI_write ("'%s' is not recognized as a CLI command\n", tokenizedArgs[0]);
-              }
-          }
-      }
-  }
-  ```  
