@@ -15,9 +15,9 @@ last_modified_at: 2023-06-21
 ---
 
 - 참고자료  
-  [MMWAVE SDK User Guide](https://nbviewer.org/github/csh44017/csh44017.github.io/blob/master/_posts/paper/mmwave_sdk_user_guide.pdf)  
-  [3D_people_counting_detection_layer_tuning_guide](https://nbviewer.org/github/csh44017/csh44017.github.io/blob/master/_posts/paper/3D_people_counting_detection_layer_tuning_guide.pdf)  
-  [Tracking 참고자료](https://nbviewer.org/github/csh44017/csh44017.github.io/blob/master/_posts/paper/Radar_based_Object_Detection_and_Tracking_for_critical_infrastructure.pdf)  
+  [MMWAVE SDK User Guide](https://nbviewer.org/github/csh44017/csh44017.github.io/blob/master/_posts/paper/mmwave_sdk_user_guide.pdf){:target="_blank"}  
+  [3D_people_counting_detection_layer_tuning_guide](https://nbviewer.org/github/csh44017/csh44017.github.io/blob/master/_posts/paper/3D_people_counting_detection_layer_tuning_guide.pdf){:target="_blank"}  
+  [Tracking 참고자료](https://nbviewer.org/github/csh44017/csh44017.github.io/blob/master/_posts/paper/Radar_based_Object_Detection_and_Tracking_for_critical_infrastructure.pdf){:target="_blank"}  
 
 ## TI radar Configuration Command 정리  
 TI의 레이더 소스코드를 보면 사용자가 환경에 따라 변경할만한 파라메타들을 튜닝해서 사용할 수 있도록 cli를 통해 레이더의 동작에 관련된 설정들을 변경할 수 있도록 구현해 놓았다.  
