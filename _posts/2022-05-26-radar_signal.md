@@ -35,7 +35,8 @@ last_modified_at: 2023-09-24
 - Q (Ouadrature-phase)  
   복소부, Imaginary part  
 
-복소신호는 전기장과 자기장이 서로 수직하게 전파되는 전자기파와 같은 2차원 신호를 표현할 수 있다. (전기장과 자기장의 2가지 정보를 하나의 수로 동시에 표현 가능, $ cos(wt) + jsin(wt) $)  
+복소신호는 전기장과 자기장이 서로 수직하게 전파되는 전자기파와 같은 2차원 신호를 표현할 수 있다.  
+(전기장과 자기장의 2가지 정보를 하나의 수로 동시에 표현 가능, $ cos(wt) + jsin(wt) $)  
 <div align="center">  
   <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/731f9343-1a4f-4451-83ca-54b2fd061e61" width="300" height="200">  
 </div>  
