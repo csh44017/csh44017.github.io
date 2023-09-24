@@ -3,16 +3,16 @@ title:  "푸리에 급수(Fourier Series)"
 excerpt: "푸리에 급수 정리"
 
 categories:
-  - SignalProcessing
+  - Radar
 tags:
-  - [FourierSeries]
+  - [SignalProcessing, FourierSeries]
 
 toc: true
 toc_sticky: true
 
 math: true
 
-date: 2022-10-26
+date: 2022-06-09
 last_modified_at: 2022-10-26
 ---
 

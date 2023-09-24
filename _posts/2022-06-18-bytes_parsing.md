@@ -3,14 +3,14 @@ title:  "Bytes 파싱 참고 노트"
 excerpt: "바이트 데이터 파싱을 위한 참고 노트"
 
 categories:
-  - Parsing
+  - Radar
 tags:
   - [Parsing, Bytes]
 
 toc: true
 toc_sticky: true
 
-date: 2023-06-08
+date: 2022-06-18
 last_modified_at: 2023-06-08
 ---
 

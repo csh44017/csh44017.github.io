@@ -3,14 +3,14 @@ title:  "임베디드 리눅스 참고"
 excerpt: "임베디드 리눅스에 관련된 배경지식 정리"
 
 categories:
-  - Linux
+  - Embedded
 tags:
   - [Embedded, Linux]
 
 toc: true
 toc_sticky: true
 
-date: 2023-07-14
+date: 2022-04-14
 last_modified_at: 2023-07-14
 ---
 
