@@ -15,6 +15,8 @@ last_modified_at: 2023-09-24
 ---
 
 ## 추론(Inference)  
+모델을 학습시키고 나서는 실제 적용할 곳에 
+런타임에서 돌려줘야 함
 
 ### ONNX(Open Neural Network Exchange)  
 Pytorch나 Tensorflow 등의 다른 프레임워크 간의 상호 운용을 허용하여 원활하게 교환하고 배포할 수 있게 해주는 표준 파일 형식  

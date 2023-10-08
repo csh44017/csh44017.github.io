@@ -1,5 +1,5 @@
 ---
-title:  "벤치마크(Benchmark)"
+title:  "머신러닝 벤치마크(Benchmark)"
 excerpt: "머신러닝에서 자주 등장하는 밴치마크 관련 정리"
 
 categories:
