@@ -10,7 +10,7 @@ tags:
 toc: true
 toc_sticky: true
 
-date: 2023-10-05
+date: 2023-03-19
 last_modified_at: 2023-10-05
 ---
 
@@ -31,7 +31,7 @@ last_modified_at: 2023-10-05
   깊은 층에서 학습되는 특징인 high-level feature에서는 주로 객체의 패턴이나 형태 정보를 추출할 수 있다.  
 
   <div align="center">  
-  <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/75edc825-7333-41a4-a159-0f72ab395ab8" width="400" height="200">  
+  <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/75edc825-7333-41a4-a159-0f72ab395ab8" width="500" height="270">  
   </div>  
 <br><br>  
 
@@ -53,25 +53,25 @@ Transfer Learning은 네트워크의 인코더 부분에 적용해서 사용한�
 4. 이 네트워크의 마지막에 **새로운 Fully Connected Layer를 필요한 Output shape에 맞게 구성**하여 이어붙인다.  
 5. 재구성한 **네트워크를 학습**한다.  
 <br>  
-<div align="center">  
-<img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/c233ca1d-5104-43ac-988e-ccc1bc49580a" width="300" height="115">  
-</div>  
 
 pre-trained 모델에서 진행된 사전에 이루어진 학습을 '**업스트림(upstream)**'이라고 하고, 사전 모델을 전이해서 새롭게 진행하는 학습은 '**다운스트림(downstream)**'이라고 한다.  
 (다운스트림은 일반적으로 과하지 않은 epoch 수에 많지 않은 데이터셋으로 높은 정확도를 얻을 수 있기 때문에 비용이 적게 든다.)  
+<div align="center">  
+<img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/c233ca1d-5104-43ac-988e-ccc1bc49580a" width="500" height="150">  
+</div>  
 
 다운스트림은 전이된 네트워크 부분의 가중치를 학습시키지 않는 '**프리징(Freezing)**'과 전체 네트워크를 모두 학습시키는 '**파인튜닝(Fine-Tuning)**'으로 나뉜다.  
 - 프리징  
   현재 데이터셋에 대한 오버 피팅으로 부터 비교적 안전하다.  
   <div align="center">  
-  <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/96dba00d-709e-4475-973d-e305e53cec54" width="300" height="100">  
+  <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/96dba00d-709e-4475-973d-e305e53cec54" width="500" height="150">  
   </div>  
 
 - 파인튜닝  
   일반적으로 많이 사용되는 방식  
   미세조정만 하기 때문에 일반적인 학습보다 학습률을 낮게 설정한다.  
   <div align="center">  
-  <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/53509de4-833a-430c-ab07-61d33e6cac43" width="300" height="100">  
+  <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/53509de4-833a-430c-ab07-61d33e6cac43" width="500" height="150">  
   </div>  
 
   - 원샷러닝(One-shot Learning)  
@@ -196,10 +196,11 @@ Input Layer 뿐아니라 **Hidden Layer에 입력하기 전에도 정규화를 �
 3. 무작위로 **좌우 반전**시켜 데이터 증대  
   (인간의 눈으로 보았을 때 좌우 반전은 sementic한 정보가 크게 바뀌지 않으므로 상하 반전은 잘 사용하지 않고 좌우 반전을 사용)  
 
-||Pre-training|Fine-tuning|  
-|-----|-----|-----|  
-|Weigth Decay |O |X |
-|MixUp        |X |O |  
+|             |Pre-training|Fine-tuning|  
+|-------------|------------|-----------|  
+|Weigth Decay |O           |X          |
+|MixUp        |X           |O          |  
+
 - 가중치 감쇠(Weight Decay)  
   **손실 함수에 패널티로 정규화 항($l_2$ norm)을 추가 손실 항목으로 더하여 신경망의 과적합을 방지**하는 정규화 기술  
 - MixUp  
@@ -218,11 +219,13 @@ BiT에서는 사전 학습에 Weight Decay로 정규화를 수행하고 데이�
 SGD momentum 0.9, 초기 learning rate 0.003에 learning rate decay 사용  
 (Pre-training 과정에서 학습되었던 가중치가 많이 변하는 것을 방지하기 위해 **Fine-tuning 과정에서는 learning rate을 상대적으로 작은 크기로 사용**함)  
 medium과 large 태스크에서 $α$ = 0.1로 MixUp 진행  
+
 |task                       |step        |  
 |---------------------------|------------|  
 |small 태스크 (20k개 미만)   |500 steps   |  
 |medium 태스크 (500k개 미만) |10,000 steps|  
 |large 태스크                |20,000 steps|  
+
 - step  
   각 미니배치마다 한번씩 수행되는 모델의 가중치 업데이트  
 - epoch  
@@ -266,6 +269,7 @@ Object Detection에서 BiT를 Backbone Network로 사용할 때 정확도가 개
 <div align="center">  
 <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/
 0ec0490e-8efc-4d7e-a546-b3f4264ed716" width="500" height="140">  
+
 <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/a06684a4-06e0-4d27-a54b-6922ec343d2a" width="500" height="160">  
 </div>  
 
