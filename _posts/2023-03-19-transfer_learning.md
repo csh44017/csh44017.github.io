@@ -276,11 +276,10 @@ Object Detection에서 BiT를 Backbone Network로 사용할 때 정확도가 개
 <br>  
 
 <div align="center">  
-<img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/0ec0490e-8efc-4d7e-a546-b3f4264ed716" width="500" height="240">  
+<img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/17f3f025-c655-4d82-91fd-79143f355b61" width="500" height="180">  
 </div>  
-
 <div align="center">  
-<img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/a06684a4-06e0-4d27-a54b-6922ec343d2a" width="500" height="210">  
+<img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/cbe2a1e5-bf31-4eea-95f5-31684533d374" width="500" height="180">  
 </div>  
 
 **모델의 크기가 작을 경우, 데이터셋의 크기가 커짐에 따라 오히려 정확도가 감소할 수 있음**  
