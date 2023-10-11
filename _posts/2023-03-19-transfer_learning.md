@@ -102,7 +102,7 @@ pre-trained 모델에서 진행된 사전에 이루어진 학습을 '**업스트
 
 
 ### 전이 학습 예제  
-[CNN과 Transfer Learning](https://www.kaggle.com/code/gpreda/cats-or-dogs-using-cnn-with-transfer-learning){:target="_blank"}  
+[Transfer Learning으로 CNN 사용](https://www.kaggle.com/code/gpreda/cats-or-dogs-using-cnn-with-transfer-learning){:target="_blank"}  
 
 - ResNet-50을 이용하여 모델 구성  
   ```python  
@@ -277,6 +277,8 @@ Object Detection에서 BiT를 Backbone Network로 사용할 때 정확도가 개
 
 <div align="center">  
 <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/0ec0490e-8efc-4d7e-a546-b3f4264ed716" width="500" height="180">  
+</div>  
+<div align="center">  
 <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/a06684a4-06e0-4d27-a54b-6922ec343d2a" width="500" height="180">  
 </div>  
 
