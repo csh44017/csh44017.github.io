@@ -161,7 +161,7 @@ pre-trained 모델에서 진행된 사전에 이루어진 학습을 '**업스트
 #### 배치 정규화(Batch Normalization)  
 Input Layer 뿐아니라 **Hidden Layer에 입력하기 전에도 정규화를 진행**  
 <div align="center">  
-<img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/1cd7999b-bfd5-4ea7-b890-d73f5f0de3b4" width="400" height="160">  
+<img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/1cd7999b-bfd5-4ea7-b890-d73f5f0de3b4" width="500" height="200">  
 </div>  
 
 - 효과  
@@ -177,7 +177,7 @@ Input Layer 뿐아니라 **Hidden Layer에 입력하기 전에도 정규화를 �
 이로 인해 **모든 디바이스마다 계산한 Statistics 값들을 수합하면 동기화하는 비용이 더 커지게 되면서 지연**될 수 있고,  
 배치 사이즈가 작으면 **배치의 평균과 분산이 iteration마다 달라져 BN이 가진 배치의 통계 값이 전체 데이터셋을 대표한다는 가정에 어긋나면서 정확도 하락으로 이어질 수 있기 때문에** BiT 논문에서는BN Layer를 사용하지 않는다.  
 <div align="center">  
-<img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/137060e4-0d0f-49ca-81db-2ced7cb72901" width="360" height="130">  
+<img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/137060e4-0d0f-49ca-81db-2ced7cb72901" width="500" height="170">  
 </div>  
 
 대신 몇 개의 채널에 대한 피처를 묶어서 **정규화하는 방법으로 Layer Norm과 Instance Norm의 장점을 적절히 사용한 'Group Normalization(GN)'과 가중치를 표준화하는 'Weight Standardization(WS)'를 함께 사용**하여 배치 사이즈로 인해 발생할 수 있는 문제를 개선하고 성능을 향상시켰다.  
@@ -234,9 +234,15 @@ medium과 large 태스크에서 $α$ = 0.1로 MixUp 진행
 
 
 ### 실험 결과  
-데이터가 적을 때 많은 성능 차이를 보이며, 기존의 SOTA 보다 높은 정확도를 보여줌  
 <div align="center">  
 <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/a3131a64-6ca6-44f9-8db7-8ed2fa4e6a88" width="500" height="180">  
+</div>  
+
+데이터가 적을 때 많은 성능 차이를 보이며, 기존의 SOTA 보다 높은 정확도를 보여줌  
+<br>  
+
+<div align="center">  
+<img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/20cbb7ff-7872-4c6c-aaf5-29b0197165d7" width="500" height="150">  
 </div>  
 
 - Specialist  
@@ -245,27 +251,30 @@ medium과 large 태스크에서 $α$ = 0.1로 MixUp 진행
   일반적인 목적으로 pre-trained representations를 이용  
 - Baseline  
   일반적으로 많이 사용되는 사전 학습 모델  
-<div align="center">  
-<img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/20cbb7ff-7872-4c6c-aaf5-29b0197165d7" width="500" height="150">  
-</div>  
+<br>  
 
-ResNet-152x4 처럼 아키텍처가 크면 데이터셋의 크기가 클 수록 Downstream 태스크에서 정확도가 향상됨  
 <div align="center">  
 <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/57f766e9-8c42-49b3-8cae-fe737e5c9e68" width="500" height="120">  
 </div>  
 
-Upstream 과정에서는 라벨링된 데이터만으로 학습이 되었다는 점이 차이가 있지만,  
-학습 데이터가 적은 상황에서 기존에 제안된 준지도학습(Semi-Supervised Learning, SSL) 방법들보다 높은 정확도를 보임  
+ResNet-152x4 처럼 아키텍처가 크면 데이터셋의 크기가 클 수록 Downstream 태스크에서 정확도가 향상됨  
+<br>  
+
 <div align="center">  
 <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/3a6f0b11-7b90-4378-b14f-5bc92838f39e" width="500" height="180">  
 </div>  
 
-Object Detection에서 BiT를 Backbone Network로 사용할 때 정확도가 개선됨  
+Upstream 과정에서는 라벨링된 데이터만으로 학습이 되었다는 점이 차이가 있지만,  
+학습 데이터가 적은 상황에서 기존에 제안된 준지도학습(Semi-Supervised Learning, SSL) 방법들보다 높은 정확도를 보임  
+<br>  
+
 <div align="center">  
 <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/17a7786b-68a6-4008-abe8-ed48557d2e1c" width="500" height="180">  
 </div>  
 
-**모델의 크기가 작을 경우, 데이터셋의 크기가 커짐에 따라 오히려 정확도가 감소할 수 있음**  
+Object Detection에서 BiT를 Backbone Network로 사용할 때 정확도가 개선됨  
+<br>  
+
 <div align="center">  
 <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/
 0ec0490e-8efc-4d7e-a546-b3f4264ed716" width="500" height="140">  
@@ -273,9 +282,13 @@ Object Detection에서 BiT를 Backbone Network로 사용할 때 정확도가 개
 <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/a06684a4-06e0-4d27-a54b-6922ec343d2a" width="500" height="160">  
 </div>  
 
-큰 데이터셋으로 학습할 경우 학습 시간을 충분히 사용하여 진행해야하며,  
-짧은 시간마다 learning rate decay를 수행하기 시작하면 최종 성능이 떨어질 수 있음  
-높은 weight decay를 사용했을 때 수렴 속도가 느려진 대신 최종 성능이 좋아짐  
+**모델의 크기가 작을 경우, 데이터셋의 크기가 커짐에 따라 오히려 정확도가 감소할 수 있음**  
+<br>  
+
 <div align="center">  
 <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/92fc2e45-a265-4708-8626-c3b700e10cc3" width="500" height="180">  
 </div>  
+
+**큰 데이터셋으로 학습할 경우 학습 시간을 충분히 사용하여 진행**해야하며,  
+**짧은 시간마다 learning rate decay를 수행하기 시작하면 최종 성능이 떨어질 수 있음**  
+**높은 weight decay를 사용했을 때 수렴 속도가 느려진 대신 최종 성능이 좋아짐**  
