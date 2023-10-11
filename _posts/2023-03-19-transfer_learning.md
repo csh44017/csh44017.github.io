@@ -279,6 +279,7 @@ Object Detection에서 BiT를 Backbone Network로 사용할 때 정확도가 개
 <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/
 0ec0490e-8efc-4d7e-a546-b3f4264ed716" width="500" height="180">  
 </div>  
+
 <div align="center">  
 <img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/a06684a4-06e0-4d27-a54b-6922ec343d2a" width="500" height="180">  
 </div>  
