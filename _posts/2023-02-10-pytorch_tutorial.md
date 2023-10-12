@@ -15,6 +15,7 @@ last_modified_at: 2023-09-27
 ---
 
 ## Pytorch  
+[Pytorch DL 튜토리얼](https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial1/Lisa_Cluster.html){:target="_blank"}  
 - 참고  
   - [파이토치 공식 튜토리얼](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html){:target="_blank"}  
   - [파이토치 한국 튜토리얼](https://tutorials.pytorch.kr/beginner/basics/quickstart_tutorial.html){:target="_blank"}  
