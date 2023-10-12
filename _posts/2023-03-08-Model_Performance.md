@@ -52,8 +52,8 @@ Accuracy의 개념을 적용하지 않는 회귀 모델에 대한 지표로 많�
 
 ### 혼동 행렬(Confusion Matrix)  
 Confusion Matrix에 작성된 숫자는 변하지 않지만 클래스마다 TP, TN, FP, FN은 다시 정해진다.  
-<div align="center">
-  <img src="./confusion_matrix.png">  
+<div align="center">  
+<img src="https://github.com/csh44017/csh44017.github.io/assets/77605589/b086f63f-8cd5-42bf-a0e5-b042d7c1b5e8" width="500" height="300">  
 </div>  
 Confusion Matrix의 (1,1)을 Class 1의 관점에서 보면 정답과 모델의 예측 결과가 같으므로 TP가 되지만, Class 2의 관점에서 보면 정답에도 속하지 않고 모델의 예측에도 속하지 않아 해당 클래스와 무관하므로 TN이 된다.  
 <br>  
