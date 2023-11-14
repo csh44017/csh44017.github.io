@@ -294,3 +294,4 @@ Object Detection에서 BiT를 Backbone Network로 사용할 때 정확도가 개
 **큰 데이터셋으로 학습할 경우 학습 시간을 충분히 사용하여 진행**해야하며,  
 **짧은 시간마다 learning rate decay를 수행하기 시작하면 최종 성능이 떨어질 수 있음**  
 **높은 weight decay를 사용했을 때 수렴 속도가 느려진 대신 최종 성능이 좋아짐**  
+
