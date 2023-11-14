@@ -50,6 +50,7 @@
 <meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="I am A Dreamer" />
 <meta property="og:type" content="website" />
+<link rel="next" href="http://localhost:4000/page2" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="I am A Dreamer" />
 <meta name="twitter:site" content="@twitter_username" />
@@ -254,6 +255,8 @@
   
 </head>
 
+
+  
 
   <body data-spy="scroll" data-target="#toc" data-topbar-visible="true">
 
@@ -481,7 +484,7 @@
 
   <div class="post-preview">
     <h1>
-      <a href="/posts/first-post/">테스트 포스팅</a>
+      <a href="/posts/pythonic_code/">Pythonic Code</a>
     </h1>
 
     <div class="post-content">
@@ -492,33 +495,15 @@
 
 
 
-        마크다운 문법
+        Pythonic 코드
+파이썬스러운 코드로, 
+Python 언어의 규칙을 준수하면서 가독성이 좋고 클린한 코드를 작성하여 파이썬 생태계와 잘 통합될 수 있도록 한다.
 
-1. 제목
-h1
-h2
-h3
-h4
-h5
-h6
+Pythonic code를 작성하기 위해 참고할 만한 것들과 헷갈릴 수 있는 부분을 정리해보았다.
 
-2. 목록
 
-  과일
-    
-      apple
-      pineapple
-      banana
-      melon
-      (다른 기호는 줄간격이 더 넓음)
-    
-  
-  과일
-    
-      apple
-      banana
-      melon
-      (들여쓰기 주...
+데이터 타입
+동적 타이핑 언어인 파이썬에서는 변수의 데이터 타입이 실행 중에 자동으로...
       </p>
     </div>
 
@@ -537,10 +522,10 @@ h6
 
 
 <em class=""
-    data-ts="1666105200"
+    data-ts="1683903600"
     data-df="ll"
     >
-  Oct 19, 2022
+  May 13, 2023
 </em>
 
 
@@ -549,7 +534,617 @@ h6
           <i class="far fa-folder-open fa-fw"></i>
           <span>
           
-            Note
+            Python
+          </span>
+        
+
+      </div>
+
+      
+
+    </div> <!-- .post-meta -->
+
+  </div> <!-- .post-review -->
+
+
+
+  <div class="post-preview">
+    <h1>
+      <a href="/posts/parallel/">병렬(Parallel) 처리</a>
+    </h1>
+
+    <div class="post-content">
+      <p>
+        
+
+
+
+
+
+        ##
+
+  Training Neural Nets on Larger Batches: Practical Tips for 1-GPU, Multi-GPU &amp;amp; Distributed setups
+  Multi-GPU 학습 과정
+
+
+https://tutorials.pytorch.kr/beginner/dist_overview.html
+
+Data Paralle...
+      </p>
+    </div>
+
+    <div class="post-meta text-muted d-flex">
+      <div class="mr-auto">
+
+        <!-- posted date -->
+        <i class="far fa-calendar fa-fw"></i>
+        <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em class=""
+    data-ts="1683817200"
+    data-df="ll"
+    >
+  May 12, 2023
+</em>
+
+
+        <!-- categories -->
+        
+          <i class="far fa-folder-open fa-fw"></i>
+          <span>
+          
+            ML
+          </span>
+        
+
+      </div>
+
+      
+
+    </div> <!-- .post-meta -->
+
+  </div> <!-- .post-review -->
+
+
+
+  <div class="post-preview">
+    <h1>
+      <a href="/posts/mlops/">MLOps (Machine Learning Operations)</a>
+    </h1>
+
+    <div class="post-content">
+      <p>
+        
+
+
+
+
+
+        MLOps (Machine Learning Operations)
+머신러닝 모델의 개발 및 운영 프로세스를 자동화하고 효율화하기 위한 방법
+‘ModelOps(모델 관리)’ + ‘DataOps(데이터 관리)’ + ‘DevOps(배포, 클라우드)’
+
+
+등장 배경
+
+  필요성
+    
+      주피터 노트북에서 만들어 프로토타입만 사용해본 모델을 실제로 서...
+      </p>
+    </div>
+
+    <div class="post-meta text-muted d-flex">
+      <div class="mr-auto">
+
+        <!-- posted date -->
+        <i class="far fa-calendar fa-fw"></i>
+        <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em class=""
+    data-ts="1683730800"
+    data-df="ll"
+    >
+  May 11, 2023
+</em>
+
+
+        <!-- categories -->
+        
+          <i class="far fa-folder-open fa-fw"></i>
+          <span>
+          
+            ML
+          </span>
+        
+
+      </div>
+
+      
+
+    </div> <!-- .post-meta -->
+
+  </div> <!-- .post-review -->
+
+
+
+  <div class="post-preview">
+    <h1>
+      <a href="/posts/augmentation/">데이터 증대(Augmentation)</a>
+    </h1>
+
+    <div class="post-content">
+      <p>
+        
+
+
+
+
+
+        데이터 증대
+
+  
+    Pytorch 라이브러리
+
+      import torch
+  import torchvision
+  import torch.nn as nn
+  import torch.optim as optim
+  import torch.nn.functional as F
+
+  from torch.optim import lr_scheduler...
+      </p>
+    </div>
+
+    <div class="post-meta text-muted d-flex">
+      <div class="mr-auto">
+
+        <!-- posted date -->
+        <i class="far fa-calendar fa-fw"></i>
+        <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em class=""
+    data-ts="1679842800"
+    data-df="ll"
+    >
+  Mar 27, 2023
+</em>
+
+
+        <!-- categories -->
+        
+          <i class="far fa-folder-open fa-fw"></i>
+          <span>
+          
+            ML
+          </span>
+        
+
+      </div>
+
+      
+
+    </div> <!-- .post-meta -->
+
+  </div> <!-- .post-review -->
+
+
+
+  <div class="post-preview">
+    <h1>
+      <a href="/posts/transfer_learning/">전이 학습(Transfer Learning)</a>
+    </h1>
+
+    <div class="post-content">
+      <p>
+        
+
+
+
+
+
+        
+  참고자료
+    
+      나동빈님 전이학습 설명 유튜브
+논문 이해에 필요한 배경 지식과 이미 익숙한 사람이라면 스킵할만한 부분도 꼼꼼하게 설명해주신다.
+    
+  
+
+
+전이 학습(Transfer Learning)
+소개
+
+  
+    Big Transfer(BiT) 논문
+Google Research 팀에서 발표한 이 논문은 이미지 분류를 목적...
+      </p>
+    </div>
+
+    <div class="post-meta text-muted d-flex">
+      <div class="mr-auto">
+
+        <!-- posted date -->
+        <i class="far fa-calendar fa-fw"></i>
+        <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em class=""
+    data-ts="1679151600"
+    data-df="ll"
+    >
+  Mar 19, 2023
+</em>
+
+
+        <!-- categories -->
+        
+          <i class="far fa-folder-open fa-fw"></i>
+          <span>
+          
+            ML
+          </span>
+        
+
+      </div>
+
+      
+
+    </div> <!-- .post-meta -->
+
+  </div> <!-- .post-review -->
+
+
+
+  <div class="post-preview">
+    <h1>
+      <a href="/posts/batch_normalization/">배치 정규화(Batch Normalization)</a>
+    </h1>
+
+    <div class="post-content">
+      <p>
+        
+
+
+
+
+
+        
+  참고자료
+    
+      나동빈님 배치 정규화 설명 유튜브
+딥러닝 아키텍처에서 BN의 동작에 대해 관련 논문과 함께 꼼꼼히 들을 수 있다.
+
+    
+  
+
+
+배치 정규화 (Batch Normalization)
+초기 Input Layer에 들어오는 데이터 외에 Hidden Layer에 입력되는 데이터에도 정규화를 진행하여 성능을 개선
+
+
+  ...
+      </p>
+    </div>
+
+    <div class="post-meta text-muted d-flex">
+      <div class="mr-auto">
+
+        <!-- posted date -->
+        <i class="far fa-calendar fa-fw"></i>
+        <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em class=""
+    data-ts="1678978800"
+    data-df="ll"
+    >
+  Mar 17, 2023
+</em>
+
+
+        <!-- categories -->
+        
+          <i class="far fa-folder-open fa-fw"></i>
+          <span>
+          
+            ML
+          </span>
+        
+
+      </div>
+
+      
+
+    </div> <!-- .post-meta -->
+
+  </div> <!-- .post-review -->
+
+
+
+  <div class="post-preview">
+    <h1>
+      <a href="/posts/batch/">배치(Batch)</a>
+    </h1>
+
+    <div class="post-content">
+      <p>
+        
+
+
+
+
+
+        배치(batch) 관련 내용 정리
+헷갈리는 배치와 미니배치에 대한 개념과 학습할 때 보통 배치 사이즈를 정하는데 왜 사용하는지, 어떻게 진행되는건지에 대한 정리를 해보려고 한다.
+
+
+배치(Batch)
+전체 데이터셋을 일정한 크기의 묶음(batch)으로 나누는 것
+
+주어직 작업에 대한 데이터를 일괄 처리하기 위해 사용하며, 데이터를 몇 개씩 묶어서 학습...
+      </p>
+    </div>
+
+    <div class="post-meta text-muted d-flex">
+      <div class="mr-auto">
+
+        <!-- posted date -->
+        <i class="far fa-calendar fa-fw"></i>
+        <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em class=""
+    data-ts="1678806000"
+    data-df="ll"
+    >
+  Mar 15, 2023
+</em>
+
+
+        <!-- categories -->
+        
+          <i class="far fa-folder-open fa-fw"></i>
+          <span>
+          
+            ML
+          </span>
+        
+
+      </div>
+
+      
+
+    </div> <!-- .post-meta -->
+
+  </div> <!-- .post-review -->
+
+
+
+  <div class="post-preview">
+    <h1>
+      <a href="/posts/model_performance/">모델의 성능 확인</a>
+    </h1>
+
+    <div class="post-content">
+      <p>
+        
+
+
+
+
+
+        
+  모델
+    
+      
+        선형(Linear) 모델
+그래프의 형태가 1개의 직선(1차 방정식)으로 표현되는 모델
+(1개의 일정한 기울기를 가짐)
+      
+      
+        비선형(NonLinear) 모델
+그래프의 형태가 1개의 직선(1차 방정식)으로 표현되지 않는 모든 형태의 모델
+(1개 보다 많은 기울기를 가져 임의의...
+      </p>
+    </div>
+
+    <div class="post-meta text-muted d-flex">
+      <div class="mr-auto">
+
+        <!-- posted date -->
+        <i class="far fa-calendar fa-fw"></i>
+        <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em class=""
+    data-ts="1678201200"
+    data-df="ll"
+    >
+  Mar  8, 2023
+</em>
+
+
+        <!-- categories -->
+        
+          <i class="far fa-folder-open fa-fw"></i>
+          <span>
+          
+            ML
+          </span>
+        
+
+      </div>
+
+      
+
+    </div> <!-- .post-meta -->
+
+  </div> <!-- .post-review -->
+
+
+
+  <div class="post-preview">
+    <h1>
+      <a href="/posts/inference/">모델 추론(Inference)</a>
+    </h1>
+
+    <div class="post-content">
+      <p>
+        
+
+
+
+
+
+        추론(Inference)
+모델을 학습시키고 나서는 실제 적용할 곳에 
+런타임에서 돌려줘야 함
+
+ONNX(Open Neural Network Exchange)
+Pytorch나 Tensorflow 등의 다른 프레임워크 간의 상호 운용을 허용하여 원활하게 교환하고 배포할 수 있게 해주는 표준 파일 형식
+사전 훈련된 모델을 ONNX 형식으로 내보내면 ONNX...
+      </p>
+    </div>
+
+    <div class="post-meta text-muted d-flex">
+      <div class="mr-auto">
+
+        <!-- posted date -->
+        <i class="far fa-calendar fa-fw"></i>
+        <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em class=""
+    data-ts="1677682800"
+    data-df="ll"
+    >
+  Mar  2, 2023
+</em>
+
+
+        <!-- categories -->
+        
+          <i class="far fa-folder-open fa-fw"></i>
+          <span>
+          
+            ML
+          </span>
+        
+
+      </div>
+
+      
+
+    </div> <!-- .post-meta -->
+
+  </div> <!-- .post-review -->
+
+
+
+  <div class="post-preview">
+    <h1>
+      <a href="/posts/neural_network/">신경망 (Neural Network)</a>
+    </h1>
+
+    <div class="post-content">
+      <p>
+        
+
+
+
+
+
+        신경망 (Nearal Network)
+입력 데이터
+feature map필터_(레이어에 들어오는 값 x 레이어의 가중치 행렬) &amp;gt; 활성화 함수
+
+채널 수 = 필터 수
+
+CNN
+Convolution 연산을 통해 위치별로 가지고 있는 패턴을 찾아 특징을 추출
+이미지 전체 사이즈의 conv 연산을 하는 것이 아니라, 어떤 특징을 잘 추출하기 위한 3x3...
+      </p>
+    </div>
+
+    <div class="post-meta text-muted d-flex">
+      <div class="mr-auto">
+
+        <!-- posted date -->
+        <i class="far fa-calendar fa-fw"></i>
+        <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em class=""
+    data-ts="1677423600"
+    data-df="ll"
+    >
+  Feb 27, 2023
+</em>
+
+
+        <!-- categories -->
+        
+          <i class="far fa-folder-open fa-fw"></i>
+          <span>
+          
+            ML
           </span>
         
 
@@ -603,17 +1198,68 @@ h6
 
   
 
+    
+    
+    
+    
+    
+
+    
+
+    
+      <!-- show number -->
+      <li class="page-item ">
+        <a class="page-link btn-box-shadow" href="/page2">2</a>
+      </li>
+    
+
+  
+
+    
+    
+    
+    
+    
+
+    
+
+    
+      <!-- show number -->
+      <li class="page-item ">
+        <a class="page-link btn-box-shadow" href="/page3">3</a>
+      </li>
+    
+
+  
+
+    
+    
+    
+    
+    
+
+    
+
+    
+      <!-- show number -->
+      <li class="page-item ">
+        <a class="page-link btn-box-shadow" href="/page4">4</a>
+      </li>
+    
+
+  
+
   <!-- mobile pagination -->
   <li class="page-index align-middle">
     <span>1</span>
-    <span class="text-muted">/ 1</span>
+    <span class="text-muted">/ 4</span>
   </li>
 
   <!-- right arrow -->
   
 
-  <li class="page-item disabled">
-    <a class="page-link btn-box-shadow" href="#" aria-label="next-page">
+  <li class="page-item ">
+    <a class="page-link btn-box-shadow" href="/page2" aria-label="next-page">
       <i class="fas fa-angle-right"></i>
     </a>
   </li>
@@ -656,7 +1302,27 @@ h6
         
         
         
-      <li><a href="/posts/first-post/">테스트 포스팅</a></li>
+      <li><a href="/posts/batch_normalization/">배치 정규화(Batch Normalization)</a></li>
+      
+        
+        
+        
+      <li><a href="/posts/augmentation/">데이터 증대(Augmentation)</a></li>
+      
+        
+        
+        
+      <li><a href="/posts/mlops/">MLOps (Machine Learning Operations)</a></li>
+      
+        
+        
+        
+      <li><a href="/posts/parallel/">병렬(Parallel) 처리</a></li>
+      
+        
+        
+        
+      <li><a href="/posts/pythonic_code/">Pythonic Code</a></li>
       
     </ul>
   </div> <!-- #access-lastmod -->
@@ -684,6 +1350,131 @@ h6
     
     
     
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
       
         
         
@@ -693,6 +1484,458 @@ h6
     
     
     
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
       
     
   
@@ -709,6 +1952,70 @@ h6
     
     
     
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
       
     
   
@@ -717,6 +2024,276 @@ h6
     
     
       
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
     
   
     
@@ -735,13 +2312,34 @@ h6
 
     
       
-      <a class="post-tag" href="/tags/blog/">Blog</a>
+      <a class="post-tag" href="/tags/ml/">ML</a>
+    
+      
+      <a class="post-tag" href="/tags/command/">Command</a>
+    
+      
+      <a class="post-tag" href="/tags/radar/">Radar</a>
+    
+      
+      <a class="post-tag" href="/tags/batch/">Batch</a>
+    
+      
+      <a class="post-tag" href="/tags/configuration/">Configuration</a>
+    
+      
+      <a class="post-tag" href="/tags/docker-compose/">Docker-Compose</a>
+    
+      
+      <a class="post-tag" href="/tags/docker/">Docker</a>
+    
+      
+      <a class="post-tag" href="/tags/git/">Git</a>
     
       
       <a class="post-tag" href="/tags/github/">Github</a>
     
       
-      <a class="post-tag" href="/tags/markdown/">Markdown</a>
+      <a class="post-tag" href="/tags/model/">Model</a>
     
 
     </div>
@@ -787,6 +2385,131 @@ h6
     
     
     
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
       
         
         
@@ -796,6 +2519,458 @@ h6
     
     
     
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
       
     
   
@@ -812,6 +2987,70 @@ h6
     
     
     
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
       
     
   
@@ -820,6 +3059,276 @@ h6
     
     
       
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
     
   
     
@@ -838,13 +3347,34 @@ h6
 
     
       
-      <a class="post-tag" href="/tags/blog/">Blog</a>
+      <a class="post-tag" href="/tags/ml/">ML</a>
+    
+      
+      <a class="post-tag" href="/tags/command/">Command</a>
+    
+      
+      <a class="post-tag" href="/tags/radar/">Radar</a>
+    
+      
+      <a class="post-tag" href="/tags/batch/">Batch</a>
+    
+      
+      <a class="post-tag" href="/tags/configuration/">Configuration</a>
+    
+      
+      <a class="post-tag" href="/tags/docker-compose/">Docker-Compose</a>
+    
+      
+      <a class="post-tag" href="/tags/docker/">Docker</a>
+    
+      
+      <a class="post-tag" href="/tags/git/">Git</a>
     
       
       <a class="post-tag" href="/tags/github/">Github</a>
     
       
-      <a class="post-tag" href="/tags/markdown/">Markdown</a>
+      <a class="post-tag" href="/tags/model/">Model</a>
     
 
     </div>
@@ -866,7 +3396,7 @@ h6
     <div class="d-flex justify-content-between align-items-center text-muted ml-md-3 mr-md-3">
       <div class="footer-left">
         <p class="mb-0">
-          © 2022
+          © 2023
           <a href="https://github.com/csh44017">sehwanchoi</a>.
           
           <span data-toggle="tooltip" data-placement="top"
