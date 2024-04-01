@@ -12,7 +12,7 @@ toc_sticky: true
 
 math: true
 
-published: false
+published: true
 
 date: 2022-05-26
 last_modified_at: 2023-09-24

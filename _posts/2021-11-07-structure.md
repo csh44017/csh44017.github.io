@@ -1,6 +1,6 @@
 ---
 title:  "구조체(Structure)"
-excerpt: "구조체 이해하기"
+excerpt: "C언어 구조체 이해하기"
 
 categories:
   - C
@@ -10,7 +10,7 @@ tags:
 toc: true
 toc_sticky: true
 
-published: false
+published: true
 
 date: 2021-11-07
 last_modified_at: 2021-11-07
